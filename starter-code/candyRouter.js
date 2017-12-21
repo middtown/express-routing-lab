@@ -24,14 +24,23 @@ var candies = [
 		"color":"Blue"
 		}];
 
-router.get("/", function(req, res){
-		res.send(candies);
+router.get("/:id", function(req, res){
+	console.log("posting");
+	candies.push(req.body);
+	res.send(candies[req.params.id-1]);
 	});
+
+router.get("/", function(req, res){
+	res.send(candies);
+	});
+
 router.post("/", function(req, res){
-		req.body.id = 3;
-		candies.push(req.body);
-		res.json(reqcandies);
+	console.log("posting");
+	candies.push(req.body);
+	res.json(req.cadies);
 	});	
+	
+
 
 //What would need to go into candies
 //in order to pass our first test?
