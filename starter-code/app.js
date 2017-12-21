@@ -9,14 +9,18 @@ var bodyParser = require('body-parser');
 var candyRouter = require ("./candyRouter");
 
 app.use(bodyParser.json());
+app.use("/candies", candyRouter);
 
 app.get("/", function(req, res){
 	console.log("working");
-	res.send("Hi Everybody");
+	res.send("Hi Everybody!");
 });
 
 //How do we redirect the /candies path
 //through our candyRouter?
 //Hint: you need app.use
 
-app.listen(3000);
+app.listen(3000, function(){
+	console.log("Server Up!");
+
+});
