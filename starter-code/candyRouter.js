@@ -25,23 +25,26 @@ var candies = [
 		}];
 
 router.get("/:id", function(req, res){
-	console.log("posting");
+	console.log("getting by id #");
 	candies.push(req.body);
 	res.send(candies[req.params.id-1]);
-	});
+});
 
 router.get("/", function(req, res){
+	console.log("getting");
 	res.send(candies);
-	});
+});
 
 router.post("/", function(req, res){
 	console.log("posting");
 	candies.push(req.body);
 	res.json(req.cadies);
-	});	
-	
+});	
 
-
+router.delete('/:id', function (req, res) {
+	console.log("deleting");
+	res.send('DELETE request to homepage');
+});
 //What would need to go into candies
 //in order to pass our first test?
 
