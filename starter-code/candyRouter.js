@@ -24,32 +24,39 @@ var candies = [
 		"color":"Blue"
 		}];
 
+//index candy
+router.get("/", function(req, res){
+	console.log("getting");
+	res.send(candies);
+});
+//show candy
 router.get("/:id", function(req, res){
 	console.log("getting by id #");
 	candies.push(req.body);
 	res.send(candies[req.params.id-1]);
 });
-
-router.get("/", function(req, res){
-	console.log("getting");
-	res.send(candies);
-});
-
+//create candy
 router.post("/", function(req, res){
 	console.log("posting");
 	candies.push(req.body);
-	res.json(req.cadies);
+	res.json(req.candies);
 });	
-
-router.delete('/:id', function (req, res) {
-	console.log("deleting");
-	res.send('DELETE request to homepage');
+//update candy
+router.put("/:id", function(req, res){
+	console.log("updating");
+	candies.push(req.body);
+	res.json(candies[req.params.id-1]);
+});	
+//delete candy
+router.delete('/:id', function(req, res) {
+	console.log("deleted");
+	res.json({message : 'deleted' });
+	res.json(candies[req.params.id-1]);
 });
-//What would need to go into candies
-//in order to pass our first test?
-
-// Fill out the rest of the routes here
+  
 router.get("/greet/:number", function(req, res){
 	res.send("Hello," + number);
 });
+
 module.exports = router;
+
