@@ -26,9 +26,10 @@ var candies = [
 
 //index candy
 router.get("/", function(req, res){
-	console.log("getting");
+	console.log("all candies");
 	res.send(candies);
 });
+
 //show candy
 router.get("/:id", function(req, res){
 	console.log("getting by id #");
@@ -37,21 +38,31 @@ router.get("/:id", function(req, res){
 });
 //create candy
 router.post("/", function(req, res){
-	console.log("posting");
+	console.log("created");
 	candies.push(req.body);
-	res.json(req.candies);
+	res.json(req.body);
 });	
+
 //update candy
-router.put("/:id", function(req, res){
+router.put("/:id/update", function(req, res){
 	console.log("updating");
-	candies.push(req.body);
-	res.json(candies[req.params.id-1]);
+	for(var i = 0; i < candies.length; i++){
+		console.log(i);
+      	console.log(req.params.id);
+		if(candies[i] == req.params.id);
+	}
+  	res.format({
+    json: function(){ res.json(req.body); }
+  	});
+	// candies.find(candies[req.params.id-1], candies);
+	// res.json(candies[req.params.id-1]);
 });	
+
 //delete candy
 router.delete('/:id', function(req, res) {
 	console.log("deleted");
+	delete (candies[req.params.id-1]);
 	res.json({message : 'deleted' });
-	res.json(candies[req.params.id-1]);
 });
   
 router.get("/greet/:number", function(req, res){
