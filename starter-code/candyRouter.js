@@ -65,9 +65,5 @@ router.delete('/:id', function(req, res) {
 	res.json({message : 'deleted' });
 });
   
-router.get("/greet/:number", function(req, res){
-	res.send("Hello," + number);
-});
-
 module.exports = router;
 
