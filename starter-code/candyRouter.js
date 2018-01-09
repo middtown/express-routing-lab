@@ -51,8 +51,7 @@ router.put("/:id/update", function(req, res){
       	console.log(req.params.id);
 		if(candies[i] == req.params.id);
 	}
-  	res.format(function(){ res.json(req.body); 
-  	});
+  	 res.json(req.body); 
 	// candies.find(candies[req.params.id-1], candies);
 	// res.json(candies[req.params.id-1]);
 });	
