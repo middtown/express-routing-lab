@@ -45,16 +45,18 @@ router.post("/", function(req, res){
 
 //update candy
 router.put("/:id/update", function(req, res){
-	console.log("updating");
-	for(var i = 0; i < candies.length; i++){
-		console.log(i);
-      	console.log(req.params.id);
-		if(candies[i] == req.params.id);
+	console.log("updating candy " + req.params.id);
+	if(req.body.name){
+		candies[req.params.id-1].name = req.body.name;
 	}
-  	 res.json(req.body); 
+	if(req.body.color){
+		candies[req.params.id-1].color = req.body.color;	}
+	res.send(candies[req.params.id-1]);
+});
+	
 	// candies.find(candies[req.params.id-1], candies);
 	// res.json(candies[req.params.id-1]);
-});	
+
 
 //delete candy
 router.delete('/:id', function(req, res) {
@@ -63,5 +65,6 @@ router.delete('/:id', function(req, res) {
 	res.json({message : 'deleted' });
 });
   
+
 module.exports = router;
 
